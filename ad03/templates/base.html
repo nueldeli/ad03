@@ -18,13 +18,16 @@
 	<!-- End icon -->
 	<link rel="icon" href="{% static 'img/fondfigure_icon.ico' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-	<title>nd</title>
+	<!-- Chart.js CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<title>SNU</title>
 </head>
 <body>
 
-	<nav class="navbar custom-div navbar-expand-lg navbar-custom mb-4">
+	<nav class="navbar custom-div navbar-expand-lg navbar-custom mt-4 mb-4 border rounded shadow p-4">
 		<a class="navbar-brand" id="navbar-name" href="{% url 'home' %}">
-			<img class="navbar-logo-img" src="{% static 'img/ad03_logo.png' %}">
+			<!--<img class="navbar-logo-img" src="{% static 'img/ad03_logo.png' %}">-->
+			<h4 class="font-weight-bold">SNU</h4>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -32,21 +35,36 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="#">About</a>
+					<a class="nav-link" href="{% url 'post_index' %}">Posts</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Post</a>
+					<a class="nav-link" href="{% url 'figure_index' %}">Figure</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Tutorial</a>
-				</li>
+				{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'user_profile' %}">@{{ user.username }}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'login' %}">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+					</li>
+				{% endif %}
+				
 			</ul>
 		</div>
 	</nav>
 
-	{% block content %}
-	<!-- Child content goes here -->
-	{% endblock %}
+	<div class="min-vh-100">
+		{% block content %}
+		<!-- Child content goes here -->
+		{% endblock %}
+	</div>
 
 	<footer class="footer text-center mt-4 p-2">
 		<div class="custom-div row mb-4">
@@ -60,7 +78,7 @@
 				<a class="fa fa-twitter" href="#"></a>
 			</div>
 		</div>
-		<p>&copy;2021 Nuel Deli, All Rights Reserved.</p> 
+		<p>&copy;For sharing purpose.</p> 
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -21,6 +21,10 @@ from .views import HomeView
 
 urlpatterns = [
 	path('', HomeView.as_view(), name='home'),
-	#path('blog/', include('blog.urls')),
+	path('blog/', include('blog.urls')),
+    path('figure/', include('figure.urls')),
+    path('ckeditor', include('ckeditor_uploader.urls')),
+    path('membership/', include('django.contrib.auth.urls')),
+    path('membership/', include('membership.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

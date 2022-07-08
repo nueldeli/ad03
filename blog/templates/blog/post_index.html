@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="custom-div border rounded shadow p-4">
+	<h4 class="text-center">News</h4>
+
+	<div class="text-center mt-4 mb-4">
+		{% if user.is_authenticated %}
+		<a href="{% url 'post_add' %}">
+			<button class="btn btn-custom">Add post</button>
+		</a>
+		{% endif %}
+	</div>
+	{% for post in object_list %}
+	<div class="list-group m-2">
+		<a class="list-group-item list-group-item-action flex-column align-items-start" href="{% url 'post_detail' post.pk %}">
+			<h6 class="link-color font-weight-bold">{{ post.title }}</h6>
+		</a>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

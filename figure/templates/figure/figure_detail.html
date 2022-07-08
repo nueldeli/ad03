@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="custom-div border shadow rounded p-4">
+	<h5 class="font-weight-bold">{{ object.div_name }}</h5>
+	<p>{{ object.population }} citizens</p>
+	<p>{{ object.area }} km^2</p>
+	<p>{{ object.elevation }} m</p>
+	<div class="text-center">
+		<a href="{% url 'figure_update' object.pk %}">
+			<button class="btn btn-custom">Edit</button>
+		</a>
+	</div>
+</div>
+{% endblock %}

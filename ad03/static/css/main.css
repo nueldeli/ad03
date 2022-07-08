@@ -40,6 +40,12 @@ a:hover {
 	color: #ff6600;
 }
 
+.btn-custom {
+	background-color: #ff6600;
+	/*background-color: #1E6D52;*/
+	color: #fff;
+}
+
 .navbar-custom {
 	background-color: transparent;
 }

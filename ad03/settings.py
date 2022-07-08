@@ -38,7 +38,13 @@ INSTALLED_APPS = [
     # Ckeditor
     'ckeditor',
     'ckeditor_uploader',
-    #---
+    # ---
+    # Membership
+    'membership.apps.MembershipConfig',
+    # ---
+    # Figure app
+    'figure.apps.FigureConfig',
+    # ---
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,6 +127,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Added: Thousand comma separator
+USE_THOUSAND_SEPARATOR = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -129,5 +138,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'ad03/static')]
 STATIC_URL = '/static/'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Media stuff
 MEDIA_ROOT = os.path.join(BASE_DIR, 'ad03/media')
 MEDIA_URL = '/media/'
+
+# Login and logout stuff
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
